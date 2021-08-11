@@ -1,16 +1,25 @@
 const clipboardy = require('clipboardy')
+const readlineSync = require('readline-sync')
 
-const isSpecial = process.argv[2] === 'special'
+console.log('Welcome')
+
+const isMarkdown = readlineSync
+  .question('Do you want to generate links for markdown? (y/n)')
+  .toLowerCase()
+  .includes('y')
+
 const regExp = /[^a-zA-Z- ]/g
 
-const startWordIndex = isSpecial ? 3 : 2
-const words = process.argv.splice(startWordIndex)
+while (true) {
+  const sentence = readlineSync.question('enter sentence: ')
+  const words = sentence.split(' ')
 
-const formatWord = w => (isSpecial ? w.replace(regExp, '') : w).toLowerCase()
+  const formatWord = w => (isMarkdown ? w.replace(regExp, '') : w).toLowerCase()
 
-const link = words.map(formatWord).join('-')
+  const link = words.map(formatWord).join('-')
 
-clipboardy.writeSync(link)
+  clipboardy.writeSync(link)
 
-const consoleResponse = `The string\n${link}\nhas been copied to clipboard`
-console.log(consoleResponse)
+  const consoleResponse = `The string\n${link}\nhas been copied to clipboard`
+  console.log(consoleResponse)
+}
