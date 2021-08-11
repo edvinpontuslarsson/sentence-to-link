@@ -1,15 +1,12 @@
 const clipboardy = require('clipboardy')
 
-const str = 'keep-but-remove/and-also_right?'
-
 const isSpecial = process.argv[2] === 'special'
+const regExp = /[^a-zA-Z- ]/g
 
 const startWordIndex = isSpecial ? 3 : 2
 const words = process.argv.splice(startWordIndex)
 
-// TODO break out regex
-const formatWord = w =>
-  (isSpecial ? w.replace(/[^a-zA-Z- ]/g, '') : w).toLowerCase()
+const formatWord = w => (isSpecial ? w.replace(regExp, '') : w).toLowerCase()
 
 const link = words.map(formatWord).join('-')
 
