@@ -4,7 +4,7 @@ const readlineSync = require('readline-sync')
 console.clear()
 console.log('Welcome')
 
-const isMarkdown = readlineSync
+const removeSlashes = readlineSync
   .question('Do you want to remove any slashes i.e. "/"? (y/n) ')
   .toLowerCase()
   .includes('y')
@@ -13,12 +13,12 @@ while (true) {
   const sentence = readlineSync.question('enter sentence: ')
   const words = sentence.split(' ')
 
-  const formatWord = w => (isMarkdown ? w.replace('/', '') : w).toLowerCase()
+  const formatWord = w => (removeSlashes ? w.replace('/', '') : w).toLowerCase()
 
-  const link = words.map(formatWord).join('-')
+  const string = words.map(formatWord).join('-')
 
-  clipboardy.writeSync(link)
+  clipboardy.writeSync(string)
 
-  const consoleResponse = `The string\n${link}\nhas been copied to clipboard`
+  const consoleResponse = `The string\n${string}\nhas been copied to clipboard`
   console.log(consoleResponse)
 }
