@@ -9,6 +9,7 @@
   "devDependencies": {},
   "scripts": {
     "start": "node index",
+    "special": "node index special",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

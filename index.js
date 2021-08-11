@@ -1,7 +1,14 @@
 const clipboardy = require('clipboardy')
 
-const words = process.argv.splice(2)
-const link = words.map(w => w.toLowerCase()).join('-')
+const isSpecial = process.argv[2] === 'special'
+const regExp = /[^a-zA-Z- ]/g
+
+const startWordIndex = isSpecial ? 3 : 2
+const words = process.argv.splice(startWordIndex)
+
+const formatWord = w => (isSpecial ? w.replace(regExp, '') : w).toLowerCase()
+
+const link = words.map(formatWord).join('-')
 
 clipboardy.writeSync(link)
 
