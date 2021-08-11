@@ -1,20 +1,19 @@
 const clipboardy = require('clipboardy')
 const readlineSync = require('readline-sync')
 
+console.clear()
 console.log('Welcome')
 
 const isMarkdown = readlineSync
-  .question('Do you want to generate links for markdown? (y/n)')
+  .question('Do you want to remove any slashes i.e. "/"? (y/n) ')
   .toLowerCase()
   .includes('y')
-
-const regExp = /[^a-zA-Z- ]/g
 
 while (true) {
   const sentence = readlineSync.question('enter sentence: ')
   const words = sentence.split(' ')
 
-  const formatWord = w => (isMarkdown ? w.replace(regExp, '') : w).toLowerCase()
+  const formatWord = w => (isMarkdown ? w.replace('/', '') : w).toLowerCase()
 
   const link = words.map(formatWord).join('-')
 
