@@ -4,7 +4,8 @@
   "description": "A Node.js CLI for replacing spaces with hyphens in a natural sentence, making it lowercased, copying it to the clipboard and printing it to the console.",
   "main": "index.js",
   "dependencies": {
-    "clipboardy": "^2.3.0"
+    "clipboardy": "^2.3.0",
+    "readline-sync": "^1.4.10"
   },
   "devDependencies": {},
   "scripts": {

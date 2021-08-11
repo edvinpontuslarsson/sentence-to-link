@@ -8,14 +8,8 @@ A simple Node.js CLI for replacing spaces with hyphens in a natural sentence, ma
 npm i
 ```
 
-### Usage
+### Run
 #### Example input
 ```Console
-npm start Set-up Instructions
-```
-#### Output
-```
-The string
-set-up-instructions
-has been copied to clipboard
+npm start
 ```
